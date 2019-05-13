@@ -53,3 +53,13 @@ Arguments:
   -e, --end, default=2018: An end date (unused in the image used in the example)
   
   -h, --help: simple help
+
+
+If you want to send the output to a file:
+
+```
+python simple.py -f example.shp > output.csv
+```
+
+The output format will be simple csv with the value in the identifying column in the first column 
+and all bands of the image provided as CSV columns.
