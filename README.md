@@ -35,12 +35,13 @@ you would like to store it):
     
     - change directory (cd) to the ee_workflows folder created by git clone
     
-    - run
+    - create environment from the environment definition in this repository
+    
     ```
-    conda create environment.yml
+    conda env create -f environment.yml     
     ```
 
-#### 2. Activate environment
+#### 2. Activate and update the environment and update code
 
 Every time you work on the project
 
@@ -51,6 +52,22 @@ Every time you work on the project
   ```
   conda activate ee_workflows
   ```
+  
+ - It might be necessary to update the conda environment
+ 
+ ```
+ conda env create -f environment.yml
+ ```
+ 
+ - Pull the newest changes fom Github
+ 
+    - change into the root directory of this project and call
+    
+    ```
+    git pull origin master
+    ```
+    
+ 
 
 ## (GDE) Raster statistics
 
