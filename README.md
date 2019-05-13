@@ -1,4 +1,4 @@
-# GeoDesign EarthEngine Workflows
+# TNC California Conservation Technology EarthEngine Workflows
 
 This repository contains EarthEngine work flows to be shared, used, 
 and re-used by Conservation tech
