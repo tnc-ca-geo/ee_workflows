@@ -28,7 +28,7 @@ Arguments:
   
   -c, --column, default=gde
   
-  -s, --start_year, default=2009
+  -s, --start, default=2009
   
-  -e, --end_year, default=2018
+  -e, --end, default=2018
 
