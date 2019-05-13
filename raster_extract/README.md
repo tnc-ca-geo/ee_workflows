@@ -24,7 +24,10 @@ simple.py -f shapefilename.shp -c columnname
 
 Arguments:
   -f, --shapefilename, default=example.shp
+  
   -c, --column, default=gde
+  
   -s, --start_year, default=2009
+  
   -e, --end_year, default=2018
 
