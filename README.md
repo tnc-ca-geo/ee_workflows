@@ -1,33 +1,43 @@
 # GeoDesign EarthEngine Workflows
 
-This repo contains EarthEngine work flows to be shared, used, and re-used by 
-Conservation tech
+This repository contains EarthEngine work flows to be shared, used, 
+and re-used by Conservation tech
 
 ## (GDE) Raster statistics
 
-Extract raster stats from Google EarthEngine using a shapefile on disk
+Extract raster statistics from Google EarthEngine Image using a 
+shapefile on a local disk
 
-### Steps
+Please try to replicate and file an Github issue whenever you get 
+stuck in order to improve this documentation and make the project full 
+portable.
 
-Please try to replicate and file issue when you get stuck.
+### Preparation
 
-#### 1. Create conda environment
+#### 1. Create a conda environment
 
-This step does NOT have been repeated every single time you work on the 
-project
+This step has performanced only once to get started with the project:
 
-- Open your Conda enabled shell (Windows: in the Anaconda/Miniconda/Conda 
-folder of the start menu)
+- Open your Conda enabled shell (Windows: Cmd symbol in 
+the Anaconda/Miniconda/Conda directory of the start menu). 
+The prompt inidicating that you are in the conda base environment 
+should look something like this:
+  
+  ```
+  (base) C:/{...}
+  ```
 
-- Git clone this repo (make sure Git is installed):
+
+- Git clone this repo (make sure Git is installed) in a directory (wherever
+you would like to store it):
+    
     ```
     git clone https://github.com/tnc-ca-geo/ee_workflows.git
     ```
 
-- Install conda environment:
+- Install the conda environment defined within this project:
     
-    - change directory (cd) into the ee_workflows folder created by the prior 
-    step
+    - change directory (cd) to the ee_workflows folder created by git clone
     
     - run
     ```
@@ -36,7 +46,7 @@ folder of the start menu)
 
 #### 2. Activate environment
 
-Before ever time you work on the project
+Before every time you work on the project
 
 - Activate the conda environment created above
     
