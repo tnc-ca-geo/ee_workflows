@@ -67,11 +67,6 @@ Every time you work on the project
     git pull origin master
     ```
     
- 
-
-## (GDE) Raster statistics
-
-Extract raster statistics from Google EarthEngine Image using a 
-shapefile on a local disk
+#### 3. Proceed to example projects
 
 
