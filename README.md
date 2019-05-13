@@ -3,22 +3,18 @@
 This repository contains EarthEngine work flows to be shared, used, 
 and re-used by Conservation tech
 
-## (GDE) Raster statistics
+## Preparation (for all examples)
 
-Extract raster statistics from Google EarthEngine Image using a 
-shapefile on a local disk
-
-Please try to replicate and file an Github issue whenever you get 
-stuck in order to improve this documentation and make the project full 
-portable.
-
-### Preparation
+Please try to replicate and create Github issues whenever you get 
+stuck. The goal is to have a tutorial that is easy to reproduce. Getting stuck
+will reflect on me, my writing, or my implicit assumptions.
 
 #### 1. Create a conda environment
 
-This step has performanced only once to get started with the project:
+Performan this step only once to get started with the project, everything
+created here will persist on your system unless explicitely deleted:
 
-- Open your Conda enabled shell (Windows: Cmd symbol in 
+- Open your Conda enabled terminal (Windows: Cmd symbol in 
 the Anaconda/Miniconda/Conda directory of the start menu). 
 The prompt inidicating that you are in the conda base environment 
 should look something like this:
@@ -46,10 +42,19 @@ you would like to store it):
 
 #### 2. Activate environment
 
-Before every time you work on the project
+Every time you work on the project
+
+- Open a conda-enabled terminal
 
 - Activate the conda environment created above
     
   ```
   conda activate ee_workflows
   ```
+
+## (GDE) Raster statistics
+
+Extract raster statistics from Google EarthEngine Image using a 
+shapefile on a local disk
+
+
