@@ -23,6 +23,7 @@ simple.py -f shapefilename.shp -c columnname
 ```
 
 Arguments:
+
   -f, --shapefilename, default=example.shp
   
   -c, --column, default=gde
