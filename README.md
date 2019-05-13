@@ -69,4 +69,4 @@ Every time you work on the project
     
 #### 3. Proceed to example projects
 
-
+- [Extract zonal statistics using a local shapefile and an EarthEngine image](raster_extract/README.md)
