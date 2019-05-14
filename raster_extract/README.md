@@ -17,7 +17,7 @@ If one of these limits is hit, the request will fail. In other words, 5000
 features can be still too much if the resulting EarthEngine operations will
 hit the memory limit or the response is too large. 
 
-#### Step 1 (both variants): Authenticate against the EarthEngine
+### Step 1 (both variants): Authenticate against the EarthEngine
 
 - in the terminal and the conda environment activated type
 
@@ -37,7 +37,7 @@ hit the memory limit or the response is too large.
   Now your machine is authorized to use Google Earthengine.
 
 
-### A) Simple extract
+## A) Simple extract
 
 The simple extract iterates over a local shapefile, serializes the geometry to GeoJSON
 and requests statistics one by one. Only 2 to 3 features can be processed per second due to 
@@ -74,9 +74,9 @@ python simple.py -f example.shp > output.csv
 The output format will be CSV with the value of the identifying column in the first column 
 and all bands of the image provided as CSV columns.
 
-### B) Extract using feature assets
+## B) Extract using feature assets
 
-#### Step 2) Divide the input shape in smaller pieces and zip for upload
+### Step 2) Divide the input shape in smaller pieces and zip for upload
 
 If the input shapefile has more than 5000 features it needs to be divided up to work 
 with the ```.reduceRegions``` method of EarthEngine. It could be also necessary to use even
@@ -106,17 +106,28 @@ python split_shapefile.py -f example.shp
 Should create a folder structure like this
 
 raster_extract
+
+```
 | --- raster_extract
-      | --- you are here
+|     | --- you are here
+|
 | --- ee_data
       | --- example
-           | --- example_000.zip
-           | --- example_001.zip
-           | --- example_002.zip
-           | --- example_003.zip
-           | --- example_004.zip
+            | --- example_000.zip
+            | --- example_001.zip
+            | --- example_002.zip
+            | --- example_003.zip
+            | --- example_004.zip
+```
 
-#### Step 3: Upload to Google Earthengine
+### Step 3: Upload to Google Earthengine
+
+#### Step 3a: Manual upload
+
+Log into the Google Earthengine using the same account used for running the scripts: https://code.earthengine.google.com/.
+In the asset tabb on the left side, create a new asset folder. This is important since the script will pick up all assets in that folder to run the extraction. It is also important to provide the asset location on the command line. Finally, it makes it easer to clean up the assets in order to preserve space with the 15GB storage limit. **Please double check that this location does not conflict with existing assets in the account**.
+
+The scripts following the convention to name that folder after the shapefile without the .shp extension. For the example file provided in the repository and our Earthengine account the asset folder would be ```user/carogistnc/example``` 
 
 
 
