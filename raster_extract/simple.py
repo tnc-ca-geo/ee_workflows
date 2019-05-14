@@ -1,3 +1,9 @@
+"""
+Simple extract of zonal statistics from Google EarthEngine. This script
+can only process two to three features per second due to EarthEngine
+rate limits. On the other hand it is very easy to use and does not depend
+on any setup on the EarthEngine itself.
+"""
 # standard library
 from argparse import ArgumentParser
 import json
@@ -18,22 +24,20 @@ def shapefile_generator(filename):
         for item in collection:
             item['geometry'] = transform_geom(
                 collection.meta['crs'], 'epsg:4326', item['geometry'])
-            item['geometry']['coordinates'] = [item['geometry']['coordinates']]
-            item['geometry']['type'] = 'MultiPolygon'
             yield item
 
 
-def main(filename, column, start, end):
+def main(filename, column, year):
     """
     Iterate over features and run reduceRegion
     """
     ee.Initialize()
-    image = medoid_image(start)
+    image = medoid_image(year)
     first = True
     for feature in shapefile_generator(filename):
-        res = image.reduceRegion(
-            ee.Reducer.mean(), ee.Geometry(feature['geometry'])
-            ).getInfo()
+        invocation = image.reduceRegion(
+            ee.Reducer.mean(), ee.Geometry(feature['geometry']), scale=30)
+        res = invocation.getInfo()
         if first:
             header = [column] + [item for item in res]
             print(','.join(header))
@@ -54,8 +58,6 @@ if __name__ == '__main__':
         '-c', '--column', help='Feature identifying column', type=str,
         default='polygon_id')
     parser.add_argument(
-        '-s', '--start', help='Start year', type=int, default=2009)
-    parser.add_argument(
-        '-e', '--end', help='End year', type=int, default=2018)
+        '-y', '--year', help='Start year', type=int, default=2018)
     args = parser.parse_args()
-    main(args.shapefilename, args.column, args.start, args.end)
+    main(args.shapefilename, args.column, args.year)

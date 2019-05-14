@@ -58,9 +58,7 @@ Arguments:
   
   -c, --column, default=gde: An feature identifying column that will appear in CSV
   
-  -s, --start, default=2009: A start date, only used when the image can be crated for a time range
-  
-  -e, --end, default=2018: An end date (unused in the image used in the example)
+  -y, --year, default=2018: A start date, only used when the image can be crated for a time range
   
   -h, --help: simple help
 
@@ -122,20 +120,42 @@ raster_extract
             | --- example_004.zip
 ```
 
-#### Step 2b: Just zip a small shapefile
+#### Step 2b: Prepare a smaller shapefile for use with EarthEngine
 
-If the shapefile is small enough to process in one pass and you wtill will use the extraction by feature asset method. You should manually zip the file and it can be manually uploaded. If you still would like to use the automated process in 3b, please place it in a parent folder with the same name (without the .shp extension).
+If the shapefile is small enough to be processed in one pass and you still 
+want to use the extraction by Google EarthEngine feature asset method. You 
+can manually upload that file to the EarthEngine.
+
+If you still would like to use the automated upload process in 3b, zip it, 
+and place zip it in a parent folder with the same name (without the 
+.shp extension).
 
 ### Step 3: Upload to Google Earthengine
 
 #### Step 3a: Manual upload
 
-Log into the Google Earthengine using the same account used for running the scripts: https://code.earthengine.google.com/.
-In the asset tabb on the left side, create a new asset folder. This is important since the script will pick up all assets in that folder to run the extraction. It is also important to provide the asset location on the command line. Finally, it makes it easer to clean up the assets in order to preserve space with the 15GB storage limit. **Please double check that this location does not conflict with existing assets in the account**.
+Log into the Google Earthengine using the same account you are using for 
+running the scripts: https://code.earthengine.google.com/. In the asset 
+tab on the left side, create a new asset folder. This is important since 
+the script will pick up all assets in that folder to run the extraction. 
+It will be also important to provide the asset location on the command line. 
+Finally, it will make it easer to clean up the assets preserving space within
+the 15GB storage limit. 
 
-The scripts following the convention to name that folder after the shapefile without the .shp extension. For the example file provided in the repository and our Earthengine account the asset folder would be ```user/carogistnc/example``` 
+**Please double check that the location you choose does not conflict with 
+existing assets in the account**.
 
-Upload the zip files created in step 2 into that folder: Go to the "New" button on the assets tab and use table upload. The asset injection will happen in the background and can take awhile. Check the right hand side task tab to observe the progress. Don't proceeed until all the assets are loaded.
+The scripts following the convention to name that folder after the shapefile 
+without the .shp extension. For the example file provided in the repository 
+and our Earthengine account the asset folder would be 
+```user/carogistnc/example```. However, you will be able to point the scripts 
+to a different location.
+
+Upload the zip files created in step 2 into that folder: Go to the "New" 
+button on the assets tab and use table upload. The asset injection will
+happen in the background and can take awhile, 10 and more minutes. 
+Check the right hand side task tab to observe the progress. Don't
+proceeed until all the assets are actually loaded.
 
 
 
