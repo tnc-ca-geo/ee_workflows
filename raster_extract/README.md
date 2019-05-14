@@ -76,7 +76,9 @@ and all bands of the image provided as CSV columns.
 
 ## B) Extract using feature assets
 
-### Step 2) Divide the input shape in smaller pieces and zip for upload
+### Step 2) Prepare for upload
+
+#### Step 2a) Divide input file in smaller pieces and zip
 
 If the input shapefile has more than 5000 features it needs to be divided up to work 
 with the ```.reduceRegions``` method of EarthEngine. It could be also necessary to use even
@@ -120,6 +122,10 @@ raster_extract
             | --- example_004.zip
 ```
 
+#### Step 2b: Just zip a small shapefile
+
+If the shapefile is small enough to process in one pass and you wtill will use the extraction by feature asset method. You should manually zip the file and it can be manually uploaded. If you still would like to use the automated process in 3b, please place it in a parent folder with the same name (without the .shp extension).
+
 ### Step 3: Upload to Google Earthengine
 
 #### Step 3a: Manual upload
@@ -128,6 +134,8 @@ Log into the Google Earthengine using the same account used for running the scri
 In the asset tabb on the left side, create a new asset folder. This is important since the script will pick up all assets in that folder to run the extraction. It is also important to provide the asset location on the command line. Finally, it makes it easer to clean up the assets in order to preserve space with the 15GB storage limit. **Please double check that this location does not conflict with existing assets in the account**.
 
 The scripts following the convention to name that folder after the shapefile without the .shp extension. For the example file provided in the repository and our Earthengine account the asset folder would be ```user/carogistnc/example``` 
+
+Upload the zip files created in step 2 into that folder: Go to the "New" button on the assets tab and use table upload. The asset injection will happen in the background and can take awhile. Check the right hand side task tab to observe the progress. Don't proceeed until all the assets are loaded.
 
 
 
