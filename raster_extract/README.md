@@ -149,13 +149,15 @@ The scripts following the convention to name that folder after the shapefile
 without the .shp extension. For the example file provided in the repository 
 and our Earthengine account the asset folder would be 
 ```user/carogistnc/example```. However, you will be able to point the scripts 
-to a different location.
+to a different location, if necessary.
 
 Upload the zip files created in step 2 into that folder: Go to the "New" 
 button on the assets tab and use table upload. The asset injection will
 happen in the background and can take awhile, 10 and more minutes. 
 Check the right hand side task tab to observe the progress. Don't
 proceeed until all the assets are actually loaded.
+
+#### Step 3b: Upload assets
 
 
 
