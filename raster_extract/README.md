@@ -159,7 +159,12 @@ proceeed until all the assets are actually loaded.
 
 #### Step 3b: Upload assets
 
-
+Please install the Google Cloud SDK, for Windows see 
+https://cloud.google.com/sdk/docs/downloads-interactive#windows. The entire process 
+for setting up Google Cloud Storage will not be explained here. For now the scripts
+just use a bucket that already exists. Our carogistnc account is configured to be used 
+with Google Cloud services. During the installation the Google Cloud SDK will ask you 
+to logon to Google. Please use the cargis.tnc@gmail.com account for now.
 
 
 
