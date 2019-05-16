@@ -17,6 +17,30 @@ If one of these limits is hit, the request will fail. In other words, 5000
 features can be still too much if the resulting EarthEngine operations will
 hit the memory limit or the response is too large. 
 
+### Remarks on defaults
+
+The scripts are setup with defaults that should work seemlessly and without
+providing any extra command line flags. A 10 item shapefile is part of this repo
+for testing. Use the carogis.tnc@gmail.com account (ask Falk for the password).
+
+```
+earthengine authenticate
+simple.py
+split_shapefile.py
+gcloud auth application-default login
+upload.py
+echo 'make sure all assets are ingested in Google engine before you proceed'
+extract.py
+```
+
+Should work, if:
+
+a) all dependencies are in place
+b) all the authentication is done properly
+
+These will be a good test before you run your own files or modifications. 
+How to get there, read the following carefully (and contact me when you get stuck).
+
 ### Step 1 (both variants): Authenticate against the EarthEngine
 
 - in the terminal and the conda environment activated type
