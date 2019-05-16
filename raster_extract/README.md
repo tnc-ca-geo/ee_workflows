@@ -36,6 +36,7 @@ extract.py
 Should work, if:
 
 a) all dependencies are in place
+
 b) all the authentication is done properly
 
 These will be a good test before you run your own files or modifications. 
@@ -59,6 +60,9 @@ How to get there, read the following carefully (and contact me when you get stuc
 
   Once you logged in, you should see an authorization code to copy in the dialog on the command line.
   Now your machine is authorized to use Google Earthengine.
+  
+  This authentication will persist on your machone (in most cases) until you or something else 
+  logs you intentionally out. 
 
 
 ## A) Simple extract
@@ -147,7 +151,7 @@ raster_extract
 #### Step 2b: Prepare a smaller shapefile for use with EarthEngine
 
 If the shapefile is small enough to be processed in one pass and you still 
-want to use the extraction by Google EarthEngine feature asset method. You 
+want to use the extraction by Google EarthEngine feature assets method. You 
 can manually upload that file to the EarthEngine.
 
 If you still would like to use the automated upload process in 3b, zip it, 
@@ -181,16 +185,42 @@ happen in the background and can take awhile, 10 and more minutes.
 Check the right hand side task tab to observe the progress. Don't
 proceeed until all the assets are actually loaded.
 
-#### Step 3b: Upload assets
+If you have a single shapefile to upload, make sure to upload all parts and place in
+its own EarthEngine asset folder so that it can be referenced in step 4. 
 
-(This section is unfinished, use manual upload for now)
+#### Step 3b: Upload assets
 
 Please install the Google Cloud SDK, for Windows see
 https://cloud.google.com/sdk/docs/downloads-interactive#windows. The entire process 
 for setting up Google Cloud Storage will not be explained here. For now the scripts
 just use a bucket that already exists. Our carogistnc account is configured to be used 
-with Google Cloud services. During the installation the Google Cloud SDK will ask you 
-to logon to Google. Please use the cargis.tnc@gmail.com account for now.
+with Google Cloud services. During the installation the Google Cloud SDK might ask you 
+to logon to Google, you can skip that for now or authenticat with our carogis.tnc@gmail.com account.
+
+Once gcloud is installed run:
+
+```
+gcloud auth application-default login
+```
+
+and follow the login directions. This authentication will be stored and will 
+persist for the next time (unless you revoke).
+
+Once you authenticate you can run:
+
+```
+python upload.py -a {ee assetfolder} -d {local directory containing shapefile parts from step 2}
+```
+
+Arguments:
+
+-a, --assetfolder, default=users/carogistnc/example: The EarthEngine folder used
+
+-d, --localdirectory, default=../../ee_data/example: Local directory very splitted and zipped shapefile is stored (see step 2)
+
+-h, --help: Help
+
+After invoking the command open the Google Earthengine code editor and observe the asset ingestion process, wait until finished.
 
 #### Step 4: Run extraction using feature assets on Google Earthengine
 
