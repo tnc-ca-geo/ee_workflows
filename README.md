@@ -69,4 +69,6 @@ Every time you work on the project
     
 #### 3. Proceed to example projects
 
+Change into the subdirectory for the project in question.
+
 - [Extract zonal statistics using a local shapefile and an EarthEngine image](raster_extract/README.md)
