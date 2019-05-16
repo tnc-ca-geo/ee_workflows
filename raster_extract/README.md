@@ -170,6 +170,11 @@ to logon to Google. Please use the cargis.tnc@gmail.com account for now.
 
 #### Step 4: Run extraction using feature assets on Google Earthengine
 
+Make sure that the asset ingestion has been completed before you run the command below. 
+Check the task tab in the EartEngine code editor (on the far right). Also make sure that there
+aren't any unwanted assets in that folder since the script will apply the reduction to all
+of them. 
+
 Do extract image statistics by the uploaded assets, use:
 
 ```
@@ -182,3 +187,21 @@ or, if you want to store the results in an csv file:
 python extract.py > destination.csv
 ```
 
+Arguments:
+
+-a, --assetfolder, default=users/carogistnc/example: An asset folder in your Google EarthEngine account
+
+-c, --column, default=polygon_id: Feature identifying column
+
+-y, --year, default=2018: year to extract
+
+-h, --help: Help
+
+
+#### Step 5: Please cleanup
+
+Please remove the ingested assets if not longer needed since the storage capacity 
+of the Google EarthEngine is limited. Alternatively, you can use adapted scripts in
+your own EE account. Unfortunately, there are currently some images hardwired into the 
+scripts that are only available in the carogistnc account. I can improve that as needed.
+Please let me know by filing Github issues. 
