@@ -159,14 +159,26 @@ proceeed until all the assets are actually loaded.
 
 #### Step 3b: Upload assets
 
-Please install the Google Cloud SDK, for Windows see 
+(This section is unfinished, use manual upload for now)
+
+Please install the Google Cloud SDK, for Windows see
 https://cloud.google.com/sdk/docs/downloads-interactive#windows. The entire process 
 for setting up Google Cloud Storage will not be explained here. For now the scripts
 just use a bucket that already exists. Our carogistnc account is configured to be used 
 with Google Cloud services. During the installation the Google Cloud SDK will ask you 
 to logon to Google. Please use the cargis.tnc@gmail.com account for now.
 
+#### Step 4: Run extraction using feature assets on Google Earthengine
 
+Do extract image statistics by the uploaded assets, use:
 
+```
+python extract.py
+```
 
+or, if you want to store the results in an csv file:
+
+```
+python extract.py > destination.csv
+```
 
