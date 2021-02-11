@@ -3,6 +3,6 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - earthengine-api=0.1.173
+  - earthengine-api
   - fiona=1.8.4
   - google-cloud-storage
