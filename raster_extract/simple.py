@@ -27,25 +27,31 @@ def shapefile_generator(filename):
             yield item
 
 
-def main(filename, column, year):
+def main(filename, column, startyear, endyear):
     """
-    Iterate over features and run reduceRegion
+    For each year in range, iterate over features and run reduceRegion
     """
     ee.Initialize()
-    image = medoid_image(year)
     first = True
-    for feature in shapefile_generator(filename):
-        invocation = image.reduceRegion(
-            ee.Reducer.mean(), ee.Geometry(feature['geometry']), scale=30)
-        res = invocation.getInfo()
-        if first:
-            header = [column] + [item for item in res]
-            print(','.join(header))
-            first = False
-        line = [
-            feature['properties'][column]] + [res[item] for item in res]
-        line = [str(item) for item in line]
-        print(','.join(line))
+    year_range = list(range(startyear, endyear + 1))
+    for year in year_range:
+        image_med = medoid_image(year)
+        for feature in shapefile_generator(filename):
+            invocation_med = image_med.reduceRegion(
+                ee.Reducer.mean(), ee.Geometry(feature['geometry']), scale=30)
+            res_med = invocation_med.getInfo()
+            if first:
+                header = [column] + [item for item in res_med] + ['year']
+                print(','.join(header))
+                first = False
+            line = [
+                feature['properties'][column]] + [res_med[item] for item in res_med] + [year]
+            line = [str(item) for item in line]
+            print(','.join(line))
+    #print_metadata
+    image_meta = medoid_image(startyear)
+    properties = image_meta.propertyNames()
+    print('Metadata properties:',properties.getInfo()) #ee.List of metadata properties
 
 
 if __name__ == '__main__':
@@ -56,8 +62,10 @@ if __name__ == '__main__':
         default='example.shp')
     parser.add_argument(
         '-c', '--column', help='Feature identifying column', type=str,
-        default='polygon_id')
+        default='MapNo')
     parser.add_argument(
-        '-y', '--year', help='Start year', type=int, default=2018)
+        '-s', '--startyear', help='Start year', type=int, default=2018)
+    parser.add_argument(
+        '-e', '--endyear', help='End year', type=int, default=2020)
     args = parser.parse_args()
-    main(args.shapefilename, args.column, args.year)
+    main(args.shapefilename, args.column, args.startyear, args.endyear)
